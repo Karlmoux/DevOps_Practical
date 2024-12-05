@@ -1,4 +1,4 @@
-name: Karl deploy Azure Infrastructure
+name: Deploy Infrastructure 
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout Code
       uses: actions/checkout@v3
 
     - name: Login to Azure
@@ -18,9 +18,10 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy Bicep
+    - name: Deploy Infrastructure
       run: |
         az deployment group create \
-          --resource-group aguadamillas_students_1 \
+          --name KarlExercise \
+          --resource-group aguadamillas_students_1\
           --template-file main.bicep \
           --parameters @main.parameters.json
