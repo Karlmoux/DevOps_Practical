@@ -1,10 +1,26 @@
 @description('The location for the resources')
 param location string = resourceGroup().location
 
+@description('Name of the ACR')
+param containerRegistryName string
+
+@description('Name of the container image')
+param containerRegistryImageName string
+
+@description('Version of the container image')
+param containerRegistryImageVersion string
+
+@description('Name of the App Service Plan')
+param appServicePlanName string
+
+@description('Name of the Web App')
+param webAppName string
+
+
 module acr './modules/acr.bicep' = {
   name: 'acrModule'
   params: {
-    name: 'KarlExerciseACR'
+    name: containerRegistryName
     location: location
     acrAdminUserEnabled: true
   }
@@ -14,7 +30,7 @@ module acr './modules/acr.bicep' = {
 module appServicePlan './modules/asp.bicep' = {
   name: 'appServicePlanModule'
   params: {
-    name: 'KarlExerciseAppServicePlan'
+    name: appServicePlanName
     location: location
     sku: {
       capacity: 1
@@ -31,12 +47,12 @@ module appServicePlan './modules/asp.bicep' = {
 module webApp './modules/awa.bicep' = {
   name: 'webAppModule'
   params: {
-    name: 'KarlExerciseWebApp'
+    name: webAppName
     location: location
     kind: 'app'
     serverFarmResourceId: appServicePlan.outputs.resourceId
     siteConfig: {
-      linuxFxVersion: 'DOCKER|KarlExerciseACR.azurecr.io/myImage:latest'
+      linuxFxVersion: 'DOCKER|${containerRegistryName}.azurecr.io/${containerRegistryImageName}:${containerRegistryImageVersion}'
       appCommandLine: ''
     }
   }

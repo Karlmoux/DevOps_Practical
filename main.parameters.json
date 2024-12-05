@@ -5,7 +5,7 @@
       "location": {
         "value": "eastus"
       },
-      "acrModule": {
+      "containerRegistryName": {
         "value": "KarlExerciseACR"
       },
       "containerRegistryImageName": {
@@ -14,10 +14,10 @@
       "containerRegistryImageVersion": {
         "value": "latest"
       },
-      "appServicePlanModule": {
+      "appServicePlanName": {
         "value": "KarlExerciseAppServicePlan"
       },
-      "webAppModule": {
+      "webAppName": {
         "value": "KarlExerciseWebApp"
       }
     }
