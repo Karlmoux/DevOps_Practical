@@ -3,7 +3,6 @@ param location string
 param kind string
 param serverFarmResourceId string
 param siteConfig object
-param appSettingsKeyValuePairs object
 
 
 resource webApp 'Microsoft.Web/sites@2021-02-01' = {
