@@ -9,7 +9,7 @@
         "value": "karlexerciseacr"
       },
       "containerRegistryImageName": {
-        "value": "myimage"
+        "value": "flask-demo"
       },
       "containerRegistryImageVersion": {
         "value": "latest"
