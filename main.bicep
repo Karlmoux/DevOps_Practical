@@ -56,4 +56,5 @@ module webApp './modules/awa.bicep' = {
       appCommandLine: ''
     }
   }
+
 }
