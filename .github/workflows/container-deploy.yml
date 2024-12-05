@@ -6,11 +6,11 @@ on:
       - main
 
 env:
-  REGISTRY_LOGIN_SERVER: '<YOUR_REGISTRY_LOGIN_SERVER>'
-  IMAGE_BASE_NAME: '<YOUR_IMAGE_NAME>'
+  REGISTRY_LOGIN_SERVER: 'karlexerciseacr.azurecr.io'
+  IMAGE_BASE_NAME: 'myImage'
   RESOURCE_GROUP: 'BCSAI2024-DEVOPS-STUDENTS-A-DEV'
-  WEBAPP_NAME: '<YOUR_WEBAPP_NAME>'
-  APP_SERVICE_PLAN: '<YOUR_APP_SERVICE_PLAN_NAME>'
+  WEBAPP_NAME: 'KarlExerciseWebApp'
+  APP_SERVICE_PLAN: 'KarlExerciseAppServicePlan'
 
 jobs:
   build-and-push:
