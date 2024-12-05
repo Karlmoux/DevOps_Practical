@@ -1,7 +1,7 @@
 @description('The location for the resources')
 param location string = resourceGroup().location
 
-module acr './modules/azureContainerRegistry.bicep' = {
+module acr './modules/acr.bicep' = {
   name: 'acrModule'
   params: {
     name: 'KarlExerciseACR'
@@ -11,7 +11,7 @@ module acr './modules/azureContainerRegistry.bicep' = {
 }
 
 
-module appServicePlan './modules/appServicePlan.bicep' = {
+module appServicePlan './modules/asp.bicep' = {
   name: 'appServicePlanModule'
   params: {
     name: 'KarlExerciseAppServicePlan'
@@ -28,7 +28,7 @@ module appServicePlan './modules/appServicePlan.bicep' = {
   }
 }
 
-module webApp './modules/webApp.bicep' = {
+module webApp './modules/awa.bicep' = {
   name: 'webAppModule'
   params: {
     name: 'KarlExerciseWebApp'
