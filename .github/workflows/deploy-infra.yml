@@ -24,6 +24,6 @@ jobs:
         az deployment group create \
           --name KarlExercise \
           --subscription e0b9cada-61bc-4b5a-bd7a-52c606726b3b \
-          --resource-group aguadamillas_students_1\
+          --resource-group BCSAI2024-DEVOPS-STUDENTS-A-DEV \
           --template-file main.bicep \
           --parameters @main.parameters.json
