@@ -9,7 +9,7 @@
         "value": "karlexerciseacr"
       },
       "containerRegistryImageName": {
-        "value": "myImage"
+        "value": "myimage"
       },
       "containerRegistryImageVersion": {
         "value": "latest"

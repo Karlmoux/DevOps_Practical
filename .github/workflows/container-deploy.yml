@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY_LOGIN_SERVER: 'karlexerciseacr.azurecr.io'
-  IMAGE_BASE_NAME: 'myImage'
+  IMAGE_BASE_NAME: 'myimage'
   RESOURCE_GROUP: 'BCSAI2024-DEVOPS-STUDENTS-A-DEV'
   WEBAPP_NAME: 'KarlExerciseWebApp'
   APP_SERVICE_PLAN: 'KarlExerciseAppServicePlan'
