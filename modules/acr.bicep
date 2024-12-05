@@ -2,7 +2,7 @@ param name string
 param location string
 param acrAdminUserEnabled bool
 
-resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
   name: name
   location: location
   sku: {
