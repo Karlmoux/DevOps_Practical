@@ -19,6 +19,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 
+        
     - name: Deploy Infrastructure
       run: |
         az deployment group create \
