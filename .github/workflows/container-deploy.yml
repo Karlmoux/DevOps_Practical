@@ -11,6 +11,9 @@ env:
   RESOURCE_GROUP: 'BCSAI2024-DEVOPS-STUDENTS-A-DEV'
   WEBAPP_NAME: 'KarlExerciseWebApp'
   APP_SERVICE_PLAN: 'KarlExerciseAppServicePlan'
+  KEY_VAULT_NAME: 'KarlExerciseKeyVault'
+  KEY_VAULT_SECRET_NAME_ACR_USERNAME: 'ACR-Username'
+  KEY_VAULT_SECRET_NAME_ACR_PASSWORD: 'ACR-Password'
 
 jobs:
   build-and-push:
@@ -58,10 +61,9 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          REGISTRY_USERNAME=$(az keyvault secret show --name ${{ env.KEY_VAULT_SECRET_NAME_ACR_USERNAME }} --vault-name ${{ env.KEY_VAULT_NAME }} --query value -o tsv)
-          REGISTRY_PASSWORD=$(az keyvault secret show --name ${{ env.KEY_VAULT_SECRET_NAME_ACR_PASSWORD }} --vault-name ${{ env.KEY_VAULT_NAME }} --query value -o tsv)
-          echo "REGISTRY_USERNAME=${REGISTRY_USERNAME}" >> $GITHUB_ENV
-          echo "REGISTRY_PASSWORD=${REGISTRY_PASSWORD}" >> $GITHUB_ENV
+          echo "REGISTRY_USERNAME=$(az keyvault secret show --name ${{ env.KEY_VAULT_SECRET_NAME_ACR_USERNAME }} --vault-name ${{ env.KEY_VAULT_NAME }} --query value -o tsv)" >> $GITHUB_ENV
+
+          echo "REGISTRY_PASSWORD=$(az keyvault secret show --name ${{ env.KEY_VAULT_SECRET_NAME_ACR_PASSWORD }} --vault-name ${{ env.KEY_VAULT_NAME }} --query value -o tsv)" >> $GITHUB_ENV
 
     - name: Deploy Docker Image to Azure Web App
       uses: azure/webapps-deploy@v3

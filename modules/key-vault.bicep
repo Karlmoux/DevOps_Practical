@@ -13,6 +13,19 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
       family: 'A'
       name: 'standard'
     }
+    accessPolicies: [
+      for assignment in roleAssignments: {
+        tenantId: subscription().tenantId
+        objectId: assignment.principalId
+        permissions: {
+          secrets: [
+            'get'
+            'list'
+            'set'
+          ]
+        }
+      }
+    ]
   }
 }
 

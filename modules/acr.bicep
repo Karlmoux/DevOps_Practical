@@ -10,8 +10,6 @@ param adminCredentialsKeyVaultSecretUserName string
 @secure()
 param adminCredentialsKeyVaultSecretUserPassword1 string
 
-@secure()
-param adminCredentialsKeyVaultSecretUserPassword2 string
 
 resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
   name: name
@@ -44,16 +42,7 @@ resource secretUserPassword1 'Microsoft.KeyVault/vaults/secrets@2023-02-01' = {
   }
 }
 
-resource secretUserPassword2 'Microsoft.KeyVault/vaults/secrets@2023-02-01' = {
-  name: adminCredentialsKeyVaultSecretUserPassword2
-  parent: adminCredentialsKeyVault
-  properties: {
-    value: acr.listCredentials().passwords[1].value
-  }
-}
-
 output credentials object = {
   username: secretUserName.properties.value
   password1: secretUserPassword1.properties.value
-  password2: secretUserPassword2.properties.value
 }

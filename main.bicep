@@ -45,7 +45,6 @@ module acr './modules/acr.bicep' = {
     adminCredentialsKeyVaultResourceId: keyVault.outputs.keyVaultId
     adminCredentialsKeyVaultSecretUserName: 'ACR-Username'
     adminCredentialsKeyVaultSecretUserPassword1: 'ACR-Password1'
-    adminCredentialsKeyVaultSecretUserPassword2: 'ACR-Password2'
   }
 }
 

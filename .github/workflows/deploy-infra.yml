@@ -19,20 +19,15 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 
-    - name: Deploy Key Vault
-      run: |
-        az deployment group create \
-          --name keyvault-deployment \
-          --subscription e0b9cada-61bc-4b5a-bd7a-52c606726b3b \
-          --resource-group BCSAI2024-DEVOPS-STUDENTS-A-DEV \
-          --template-file modules/key-vault.bicep \
-          --parameters name=your-keyvault-name \
-                        location="West Europe" \
-                        enableVaultForDeployment=true \
-                        roleAssignments='[{"principalId":"7200f83e-ec45-4915-8c52-fb94147cfe5a","roleDefinitionIdOrName":"Key Vault Secrets User","principalType":"ServicePrincipal"}]'
-
     - name: Deploy Infrastructure
       run: |
+        az deployment group create \
+          --name karlexercise-keyvault \
+          --subscription e0b9cada-61bc-4b5a-bd7a-52c606726b3b \
+          --resource-group BCSAI2024-DEVOPS-STUDENTS-A-DEV \
+          --template-file key-vault.bicep \
+          --parameters @main.parameters.json
+
         az deployment group create \
           --name karlexercise \
           --subscription e0b9cada-61bc-4b5a-bd7a-52c606726b3b \
