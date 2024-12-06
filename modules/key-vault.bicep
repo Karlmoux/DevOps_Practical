@@ -8,6 +8,11 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   location: location
   properties: {
     enabledForDeployment: enableVaultForDeployment
+    tenantId: subscription().tenantId
+    sku: {
+      family: 'A'
+      name: 'standard'
+    }
   }
 }
 
@@ -20,3 +25,5 @@ resource roleAssignment 'Microsoft.Authorization/roleAssignments@2021-04-01-prev
     scope: keyVault.id
   }
 }]
+
+output keyVaultId string = keyVault.id
