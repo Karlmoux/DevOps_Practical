@@ -6,10 +6,6 @@ param roleAssignments array
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: name
   location: location
-  sku: {
-    family: 'A'
-    name: 'standard'
-  }
   properties: {
     enabledForDeployment: enableVaultForDeployment
   }
